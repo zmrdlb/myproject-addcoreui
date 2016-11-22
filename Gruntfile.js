@@ -2,9 +2,9 @@
 //var Path = require('path');
 module.exports = function(grunt) {
     grunt.file.setBase(__dirname);
-    var packdir = '../../tool/'; //package.json所在的目录
-    var npmdir = '../../tool/node_modules/'; //npm模块路径
-    var __coreuibaseurl = '../../coreui/js';
+    var packdir = '../tool/'; //package.json所在的目录
+    var npmdir = '../tool/node_modules/'; //npm模块路径
+    var __coreuibaseurl = '../../coreui/js'; //相对于baseUrl
 	/**
 	 * requirejs优化经验说明：
 	 * 1. requirejs优化，最好不要用jquery的压缩后的插件，因为会重复压缩。实在不行配合参数skipDirOptimize: true，让不在modules里面的文件不进行优化

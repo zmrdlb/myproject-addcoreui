@@ -7,7 +7,7 @@
 /**
  * requirejs配置
  */
-var __coreuibaseurl = '../../coreui/js';
+var __coreuibaseurl = '../../coreui/js'; //相对于baseUrl
 
 requirejs.config({
     baseUrl: '../js',
