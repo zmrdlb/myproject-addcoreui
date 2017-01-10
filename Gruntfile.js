@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 
 		paths: {
             'text': __coreuibaseurl + '/widget/lib/require.text',
-            'css': __coreuibaseurl + 'widget/lib/require-css/css',
+            'css': __coreuibaseurl + '/widget/lib/require-css/css',
 
             '$': 'empty:',
             'jquery': 'empty:',
@@ -47,7 +47,8 @@ module.exports = function(grunt) {
 
             //当前业务公共组件库路径
 
-            'COREUI': __coreuibaseurl + '/ui'
+            'COREUI': __coreuibaseurl + '/ui',
+            'CORECOMMON': __coreuibaseurl + '/common'
         },
         shim: {
     		'migrate': ['jquery']
@@ -75,7 +76,7 @@ module.exports = function(grunt) {
 	    *     3. shim配置项依赖项不采用cdn方式加载，并且build时默认打包
 	    */
 		exclude: {
-		    'all':[__coreuibaseurl + 'widget/lib/require-css/normalize']
+		    'all':[__coreuibaseurl + '/widget/lib/require-css/normalize']
 		}
 	};
 	var version = new Date().getTime();
