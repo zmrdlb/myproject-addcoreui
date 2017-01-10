@@ -13,7 +13,10 @@ requirejs.config({
     baseUrl: '../js',
     paths: {
         'text': __coreuibaseurl + '/widget/lib/require.text',
-        'jquery': __coreuibaseurl+'/widget/lib/jquery-1.11.3.min',
+        'css': __coreuibaseurl + '/widget/lib/require-css/css',
+
+        'jquery': __coreuibaseurl + '/widget/lib/jquery-3.1.1',
+        'migrate': __coreuibaseurl + '/widget/lib/jquery-migrate-3.0.0',
         'libio': __coreuibaseurl + '/widget/io',
         'libjson': __coreuibaseurl + '/widget/util/json',
         'libchannel': __coreuibaseurl + '/widget/util/channel',
@@ -32,10 +35,14 @@ requirejs.config({
 
         //当前业务公共组件库路径
 
-        'COREUI': __coreuibaseurl + '/ui'
-    }
+        'COREUI': __coreuibaseurl + '/ui',
+        'CORECOMMON': __coreuibaseurl + '/common'
+    },
+    shim: {
+		'migrate': ['jquery']
+	}
 });
 
-define('$',['jquery'],function($){
+define('$',['jquery','migrate'],function($){
     return $;
 });

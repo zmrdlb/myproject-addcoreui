@@ -1,5 +1,3 @@
-/*请复制到public/tools里面执行*/
-//var Path = require('path');
 module.exports = function(grunt) {
     grunt.file.setBase(__dirname);
     var packdir = '../tool/'; //package.json所在的目录
@@ -27,6 +25,8 @@ module.exports = function(grunt) {
 
 		paths: {
             'text': __coreuibaseurl + '/widget/lib/require.text',
+            'css': __coreuibaseurl + 'widget/lib/require-css/css',
+
             '$': 'empty:',
             'jquery': 'empty:',
             'libio': __coreuibaseurl + '/widget/io',
@@ -49,8 +49,34 @@ module.exports = function(grunt) {
 
             'COREUI': __coreuibaseurl + '/ui'
         },
+        shim: {
+    		'migrate': ['jquery']
+    	},
         map: {
-        }
+        },
+        /**
+		* 给每个待打包的文件，指定不需要打包的文件.
+		* @param {name: ['file']} 打包name文件或文件夹下的所有文件，排除对指定file列表的文件的打包
+		* 配置情况举例说明如下：
+		* {
+			'all': ['api1'] 所有的modules不打包模块依赖api1
+			'page': ['api1'] page文件夹下的所有文件都不打包模块依赖api1
+		*	'page/main1': ['api1'] page/main1.js不打包模块依赖api1
+		* }
+		* 不需要此项，则为{}
+		*
+		注意：如果指定了exclude，如'page/home/main1': ['api1']，那么page/home/main1.js将会打包所有的依赖，但不包括api1及api1的依赖。
+		  所以api1也应该配置加入mfolder:['third/api1']。但是如果api1和main1有相同的依赖，那么main1则不包括与api1中共同的依赖
+	    *
+	    *  如果shim配置项依赖项是cdn加载方式，那么build后会出错。具体原因可以参加requirejs官网“"shim"配置的优化器重要注意事项:”
+	    *  解决方案有以下几种（优先级从高到低排列）：
+	    * 	  1. 将shim配置项改成AMD写法，不需要shim配置
+	    *     2. 设置build时不将shim配置项打包
+	    *     3. shim配置项依赖项不采用cdn方式加载，并且build时默认打包
+	    */
+		exclude: {
+		    'all':[__coreuibaseurl + 'widget/lib/require-css/normalize']
+		}
 	};
 	var version = new Date().getTime();
 
@@ -113,24 +139,6 @@ module.exports = function(grunt) {
 		        force: true
 		    },
 		    nouse: ["../dist/myproject-addcoreui/css/**/*.less","../dist/myproject-addcoreui/build.txt"] //删除无用文件
-		},
-        //coreui文件复制
-		copy: {
-			coreui: {
-				expand: true,
-				cwd: '../coreui/',
-				src: ['js/widget/lib/*'],
-				dest: '../dist/coreui/'
-			}
-		},
-        //coreui css打包压缩
-		cssmin: {
-			minify: {
-				expand: true,
-				cwd: '../coreui/',
-				src: ['css/page/*.css'],
-				dest: '../dist/coreui/'
-			}
 		}
 	});
 
@@ -284,8 +292,6 @@ module.exports = function(grunt) {
     /*******提测或上线执行*********/
     // 打包压缩
 	grunt.registerTask('default', 'default', function(){
-        //如果coreui有所修改，则运行第一段，一般运行第二段
-        //grunt.task.run(['copy','cssmin','includes','addfiles','requirejs','replace','htmlmin','clean']);
 		grunt.task.run(['includes','addfiles','requirejs','replace','htmlmin','clean']);
 	});
 };
