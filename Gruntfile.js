@@ -264,7 +264,7 @@ module.exports = function(grunt) {
 					  2. 压缩所有代码；
 					  3. 按照引用对modules里声明的文件进行打包；
 					*/
-					fileExclusionRegExp: /^(html|sectiontpl|Gruntfile\.js)$/, //不复制到dist的文件
+					fileExclusionRegExp: /^(.git|html|sectiontpl|Gruntfile\.js)$/, //不复制到dist的文件
 					//stubModules: ['api1'], //这个配置项有问题，api1压缩后正常，但是在打包后的main1.js里内容被清空define("api1",{})
 					//配置文件中相关路径的配置项
 					paths: requirejsconfig.paths || {},
