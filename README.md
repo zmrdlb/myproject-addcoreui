@@ -31,7 +31,7 @@ D:\mycoderoot\project-frame\
 
 4 . 开发时sectiontpl编译
 
-同https://github.com/zmrdlb/projectdemo中2.4第4条说明，此处运行grunt develop --base=D:\mycoderoot\project-frame\tool\node_modules
+同https://github.com/zmrdlb/projectdemo中2.4第4条说明，在myproject-addcoreui下运行grunt develop --base=D:\mycoderoot\project-frame\tool\node_modules
 
 # 运行
 
@@ -39,15 +39,13 @@ http://web.dev.net/pc/myproject-addcoreui/section/index.html
 
 # 提测或上线前代码编译
 
-1 . 打开myproject-addcoreui/Gruntfile.js，我们可以看到编译的配置。在底部可以看到以下两行代码：
+1. 在D:\mycoderoot\project-frame下新建dist目录，切换到：D:\mycoderoot\project-frame\dist
 
-- grunt.task.run(['includes','addfiles','requirejs','replace','htmlmin','clean']);
-> 平常仅仅修改了myproject-addcoreui，则只需要打开此配置
+2. 在dist下，git clone coreui和myproject-addcoreui，分别切换到dist分支。我们规定dist分支存放提测上线代码。后续大家可以根据需要自由发挥。
 
-- grunt.task.run(['copy','cssmin','includes','addfiles','requirejs','replace','htmlmin','clean']);
-> 首次编译或修改了coreui，则需注释掉第一个配置，打开此配置。比第一个多了copy和cssmin，就是对coreui的编译。
+3 . 如果首次载入coreui，或者修改了coreui，先切换到coreui下，运行：grunt -v --base=D:\mycoderoot\project-frame\tool\node_modules
 
-2 . 在myproject-addcoreui下运行grunt -v --base=D:\mycoderoot\project-frame\tool\node_modules，则可看到同级多了个dist。将fiddler配置修改成D:\mycoderoot\project-frame\dist,
+4 . 在myproject-addcoreui下运行grunt -v --base=D:\mycoderoot\project-frame\tool\node_modules，则可看到同级多了个dist。将fiddler配置修改成D:\mycoderoot\project-frame\dist,
 再次访问http://web.dev.net/pc/myproject-addcoreui/section/index.html，恭喜你，访问到了编译后的代码。
 
 # ps
