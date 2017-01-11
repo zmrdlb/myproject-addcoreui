@@ -15,7 +15,7 @@ requirejs.config({
         'text': __coreuibaseurl + '/widget/lib/require.text',
         'css': __coreuibaseurl + '/widget/lib/require-css/css',
 
-        'jquery': __coreuibaseurl + '/widget/lib/jquery-3.1.1',
+        'jquery': __coreuibaseurl + '/widget/lib/jquery-3.1.1.min',
         'migrate': __coreuibaseurl + '/widget/lib/jquery-migrate-3.0.0',
         'libio': __coreuibaseurl + '/widget/io',
         'libjson': __coreuibaseurl + '/widget/util/json',
