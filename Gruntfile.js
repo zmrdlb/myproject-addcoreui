@@ -288,7 +288,7 @@ module.exports = function(grunt) {
 
     /*******开发时运行*********/
     // 把tpl中的模板合并成真正的页面到section
-    grunt.registerTask('develop',['watch:includes']);
+    grunt.registerTask('develop',['includes','watch:includes']);
     //如果不想watch，直接合并tpl到section。则运行grunt includes:html --base=**
 
     /*******提测或上线执行*********/
