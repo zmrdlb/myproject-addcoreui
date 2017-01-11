@@ -39,9 +39,9 @@ http://web.dev.net/pc/myproject-addcoreui/section/index.html
 
 # 提测或上线前代码编译
 
-1. 在D:\mycoderoot\project-frame下新建dist目录，切换到：D:\mycoderoot\project-frame\dist
+1 . 在D:\mycoderoot\project-frame下新建dist目录，切换到：D:\mycoderoot\project-frame\dist
 
-2. 在dist下，git clone coreui和myproject-addcoreui，分别切换到dist分支。我们规定dist分支存放提测上线代码。后续大家可以根据需要自由发挥。
+2 . 在dist下，git clone coreui和myproject-addcoreui，分别切换到dist分支。我们规定dist分支存放提测上线代码。后续大家可以根据需要自由发挥。
 
 3 . 如果首次载入coreui，或者修改了coreui，先切换到coreui下，运行：grunt -v --base=D:\mycoderoot\project-frame\tool\node_modules
 
