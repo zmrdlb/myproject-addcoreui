@@ -139,8 +139,9 @@ module.exports = function(grunt) {
 		    options: {
 		        force: true
 		    },
-		    nouse: ["../dist/myproject-addcoreui/css/**/*.less","../dist/myproject-addcoreui/build.txt"] //删除无用文件
-		}
+		    nouse: ["../dist/myproject-addcoreui/css/**/*.less","../dist/myproject-addcoreui/build.txt"], //删除无用文件
+            dist: ["../dist/myproject-addcoreui/*","!../dist/myproject-addcoreui/.git"]
+        }
 	});
 
 	//配置requirejs的任务
@@ -255,7 +256,7 @@ module.exports = function(grunt) {
 				    appDir: requirejsconfig.appDir, //将appDir下的代码全部压缩复制到dir参数指定的目录中
 					baseUrl: requirejsconfig.baseUrl,
 					dir: requirejsconfig.dir, //目标文件夹
-					//keepBuildDir: false, //设置为false,则会先清空dir里面的文件
+					keepBuildDir: true, //设置为false,则会先清空dir里面的文件
 					optimizeCss: 'standard', //压缩css
 					//skipDirOptimize: true, 默认为false。为true则除了modules里声明的文件，其他文件未进行优化和压缩，也就是说和执行requirejs优化前是一样的
 					/*用正则表达式声明指定不复制到dir指定文件夹的文件。如果modules里面的文件依赖于此声明的文件，则不要使用此配置，否则会报错。原因如下：
@@ -293,6 +294,6 @@ module.exports = function(grunt) {
     /*******提测或上线执行*********/
     // 打包压缩
 	grunt.registerTask('default', 'default', function(){
-		grunt.task.run(['includes','addfiles','requirejs','replace','htmlmin','clean']);
+		grunt.task.run(['clean:dist','includes','addfiles','requirejs','replace','htmlmin','clean:nouse']);
 	});
 };
