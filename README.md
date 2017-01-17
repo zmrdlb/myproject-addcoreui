@@ -41,7 +41,9 @@ http://web.dev.net/pc/myproject-addcoreui/section/index.html
 
 1 . 在D:\mycoderoot\project-frame下新建dist目录，切换到：D:\mycoderoot\project-frame\dist
 
-2 . 在dist下，git clone coreui和myproject-addcoreui，分别切换到dist分支。我们规定dist分支存放提测上线代码。后续大家可以根据需要自由发挥。
+2 . 在dist下，git clone coreui和myproject-addcoreui，分别新建并切换到dist分支。我们规定dist分支存放提测上线代码。后续大家可以根据需要自由发挥。
+
+> 此处有个坑，因为coreui默认做了git add submodule 引用，所以从master新建dist分支后，先把.gitmodules里面的内容清空，注意不是删除。因为不这样子，运行grunt变异后的js无法提交，因为会识别成submodule里引用的另外一个项目的提交。
 
 3 . 如果首次载入coreui，或者修改了coreui，先切换到coreui下，运行：grunt -v --base=D:\mycoderoot\project-frame\tool\node_modules
 
