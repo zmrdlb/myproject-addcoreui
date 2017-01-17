@@ -32,6 +32,7 @@ requirejs.config({
         'libtpl': __coreuibaseurl + '/widget/util/tpl',
         'libpage': __coreuibaseurl + '/widget/ui/page',
         'libtab': __coreuibaseurl + '/widget/ui/tab',
+        'libform': __coreuibaseurl + '/widget/ui/form',
 
         //当前业务公共组件库路径
 
