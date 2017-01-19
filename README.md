@@ -60,33 +60,40 @@ http://web.dev.net/pc/myproject-addcoreui/section/index.html
 
 1. 对myproject-addcoreui要进行独立的域名设置，和coreui不一样；
 
-- coreui: web.dev.com
+- coreui: web.dev.net
 
-- myproject-addcoreui: my.dev.com
+- myproject-addcoreui: my.dev.net
 
 2. 提测或上线时对myproject-addcoreui/section/index.html进行路径映射
 
-- 访问http://my.dev.com/直接映射到index.html
+- 访问http://my.dev.net/直接映射到index.html
 
 3. 不同环境域名不一样
 
-- 测试环境coreui: web.dev.com
+- 测试环境coreui: web.dev.net
 
-- 线上环境coreui: web.com
+- 线上环境coreui: web.net
 
 这个时候就没那么轻松了，那其实就是不同情况，不同环境，会有不同的设置。比如我首次用到实际项目中，本地 | 测试 | 线上，3者的页面路径和coreui资源的访问路径都不一样，那么我的解决方法就是针对sectiontpl中的变量进行替换，如：
+
+sectiontpl/include/js.html
+
+```
+<script src="@@corehost/coreui/js/widget/lib/requirejs2.1.22.min.js"></script>
+
+```
 
 Gruntfile.js
 
 ```
-
+    var _env = process.argv[3];
     if(_env == '--dev'){
-        var __corehost = 'http://web.dev.com';
+        var __corehost = 'http://web.dev.net';
     }else{
-        var __corehost = 'http://web.com';
+        var __corehost = 'http://web.net';
     }
     //本地开发coreui文件对应的域名
-    var __corehost_qa = 'http://web.dev.com';
+    var __corehost_qa = 'http://web.dev.net';
     
 ```
 
@@ -148,3 +155,6 @@ grunt.registerTask('default', 'default', function(){
 提测：grunt -v --dev --base=D:\mycoderoot\project-frame\tool\node_modules
 
 上线：grunt -v --base=D:\mycoderoot\project-frame\tool\node_modules
+
+
+举一反三，其他问题解决类似
