@@ -78,7 +78,7 @@ http://web.dev.net/pc/myproject-addcoreui/section/index.html
 
 Gruntfile.js
 
-''''
+```
 
     if(_env == '--dev'){
         var __corehost = 'http://web.dev.com';
@@ -88,11 +88,11 @@ Gruntfile.js
     //本地开发coreui文件对应的域名
     var __corehost_qa = 'http://web.dev.com';
     
-''''
+```
 
 grunt.initConfig中的配置：
 
-'''
+```
 
     replace: {
           dist: {
@@ -124,20 +124,22 @@ grunt.initConfig中的配置：
          }
       }
       
-'''
+```
 
 任务配置：
 
-- 本地开发时:
+```
+//本地开发时:
 
-> grunt.registerTask('develop',['includes:src','replace:src','watch:includes']);
+grunt.registerTask('develop',['includes:src','replace:src','watch:includes']);
 
-- 提测或上线:
+//提测或上线:
 
-> grunt.registerTask('default', 'default', function(){
+grunt.registerTask('default', 'default', function(){
   grunt.task.run(['clean:dist','addfiles','requirejs','includes:dist','replace:dist','htmlmin','clean:nouse']);
 });
-  
+
+```
 
 命名执行：
 
