@@ -1,8 +1,8 @@
 # 前言
 
-阅读之前，请先阅读：[业务核心库](https://github.com/zmrdlb/myproject-addcoreui)
+阅读之前，请先阅读：[业务核心库](https://github.com/zmrdlb/coreui.git)，[工程目录设计](https://github.com/zmrdlb/projectdemo.git)
 
-此项目是使用[业务核心库](https://github.com/zmrdlb/myproject-addcoreui)的具体业务工程demo。即我们开发项目的时候工程目录设计如下：
+此项目是使用[业务核心库](https://github.com/zmrdlb/coreui.git)的具体业务工程demo。即我们开发项目的时候工程目录设计如下：
 
 - 业务核心库
 
