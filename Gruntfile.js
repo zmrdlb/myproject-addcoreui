@@ -97,7 +97,6 @@ module.exports = function(grunt) {
                     ]
                 },
                 expand: true,
-                flatten: true,
                 cwd: '../dist/myproject-addcoreui/section/',
                 src: ['*.html'],
                 dest: '../dist/myproject-addcoreui/section/'
